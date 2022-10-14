@@ -3,9 +3,11 @@ import ElementPlus from "element-plus";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+
 import "element-plus/dist/index.css";
 import "./assets/css/index.scss";
 import "./assets/icons/index.js";
+
 
 import { ComponentCustomProperties } from "vue";
 import { Store } from "vuex";

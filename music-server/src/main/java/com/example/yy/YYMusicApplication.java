@@ -17,8 +17,8 @@ public class YYMusicApplication {
     public static void docConfig(){ DocsConfig config = new DocsConfig();
         config.setProjectPath("D:\\Projects\\music\\YY-Music\\music-server"); // 项目根目录
         config.setProjectName("YYMusic"); // 项目名称
-        config.setApiVersion("V1.0");       // 声明该API的版本
-        config.setDocsPath("src/static/apiDoc"); // 生成API 文档所在目录
+        config.setApiVersion("V1");       // 声明该API的版本
+        config.setDocsPath("apiDoc"); // 生成API 文档所在目录
         config.setAutoGenerate(Boolean.TRUE);  // 配置自动生成
         Docs.buildHtmlDocs(config); // 执行生成文档
         }

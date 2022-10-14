@@ -89,7 +89,17 @@ const HttpManager = {
   insertUserSupport:({commentId,userId}) => post(`userSupport/insert`, {commentId,userId}),
 
   //获取所有的海报
-  getBannerList: () => get("banner/getAllBanner")
+  getBannerList: () => get("banner/getAllBanner"),
+
+  // =======================> 留言 API
+  //增加留言
+  addMessageBoard:({userId,message}) => post('message/add',{userId,message}),
+  //获取展示留言
+  getEnabledMessageBoard: (enabled) => get(`message/enabled/detail?enabled=${enabled}`),
+
+  // =======================> 反馈 API
+  addFeedback:({userId,message}) => post('feedback/add',{userId,message})
+
 };
 
 

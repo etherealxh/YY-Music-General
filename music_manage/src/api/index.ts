@@ -90,8 +90,21 @@ const HttpManager = {
     // 返回歌单里指定歌单ID的歌曲
     getListSongOfSongId: (songListId) => get(`listSong/detail?songListId=${songListId}`),
     // 删除歌单里的歌曲
-    deleteListSong: (songId) => get(`listSong/delete?songId=${songId}`)
+    deleteListSong: (songId) => get(`listSong/delete?songId=${songId}`),
 
+    // =======================> 留言 API 完成
+    //返回所有留言
+    getALLMessageBoard: () => get(`message`),
+    //删除留言
+    deleteMessageBoard: (id) => get(`/message/delete?id=${id}`),
+    //回复留言
+    replyMessageBoard: ({id,userId,message,replied,replyName,replyContent,enabled}) => post(`/message/reply`,{id,userId,message,replied,replyName,replyContent,enabled}),
+
+    // =======================> 反馈 API 完成
+    //返回所有反馈
+    getALLFeedback:() => get('feedback'),
+    //删除反馈
+    deleteFeedback: (id) => get(`/feedback/delete?id=${id}`),
 }
 
 export {HttpManager}

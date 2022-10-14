@@ -151,7 +151,16 @@
         </repository>
     </repositories>
 
+
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
             <!-- 加上这段代码  打包插件 因为启动不起来 -->
             <plugin>

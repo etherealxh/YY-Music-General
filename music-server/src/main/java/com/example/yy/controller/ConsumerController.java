@@ -18,7 +18,7 @@ public class ConsumerController {
     @Autowired
     private ConsumerService consumerService;
     /**
-     * TODO 前台页面调用 注册
+     * 前台页面调用 注册
      * 用户注册
      * */
     @PostMapping("/user/add")
@@ -26,7 +26,7 @@ public class ConsumerController {
          return consumerService.addUser(registryRequest);
     }
     /**
-     * TODO 用户前台页面调用 登录
+     * 用户前台页面调用 登录
      * 用户登录判断
      * */
     @PostMapping("/user/login/status")
@@ -34,7 +34,7 @@ public class ConsumerController {
         return consumerService.loginStatus(loginRequest,session);
     }
     /**
-     * TODO 管理员后台页面调用
+     * 管理员后台页面调用
      * 返回所有用户
      * */
     @GetMapping("/user")
@@ -42,7 +42,7 @@ public class ConsumerController {
         return consumerService.allUser();
     }
     /**
-     * TODO 用户前台页面调用
+     * 用户前台页面调用
      * 返回指定ID的用户
      * */
     @GetMapping("/user/detail")
@@ -50,7 +50,7 @@ public class ConsumerController {
         return consumerService.userOfId(id);
     }
     /**
-     * TODO 管理员后台页面调用
+     * 管理员后台页面调用
      * 删除用户
      * */
     @GetMapping("/user/delete")
@@ -58,7 +58,7 @@ public class ConsumerController {
         return consumerService.deleteUser(id);
     }
     /**
-     * TODO 前后台页面调用
+     * 前后台页面调用
      * 更新用户信息
      * */
     @PostMapping("/user/update")
@@ -66,7 +66,7 @@ public class ConsumerController {
         return consumerService.updateUserMsg(updateRequest);
     }
     /**
-     * TODO 前后台页面调用
+     * 前后台页面调用
      * 更新用户密码
      * */
     @PostMapping("/user/updatePassword")
@@ -74,7 +74,7 @@ public class ConsumerController {
         return consumerService.updatePassword(updatePasswordRequest);
     }
     /**
-     * TODO 前后台页面调用
+     * 前后台页面调用
      * 更新用户头像
      * */
     @PostMapping("/user/avatar/update")

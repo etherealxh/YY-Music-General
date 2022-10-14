@@ -45,7 +45,8 @@
             const store = useStore();
 
             const collapse = ref(true);
-            const username = ref("admin");
+            //const username = ref("admin");
+            const username =ref( sessionStorage.getItem("username") );
             const userPic = computed(() => store.getters.userPic);
             const musicName = ref(MUSICNAME);
 

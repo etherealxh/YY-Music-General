@@ -72,6 +72,16 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/setting/PersonalData.vue"),
       },
       {
+        path: "/about-me",
+        name: "about-me",
+        component: () => import("@/views/author/AboutMe.vue"),
+      },
+      {
+        path: "/message",
+        name: "message",
+        component: () => import("@/views/author/MessageBoard.vue"),
+      },
+      {
         path: "/setting",
         name: "setting",
         meta: {

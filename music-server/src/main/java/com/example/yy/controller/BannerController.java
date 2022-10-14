@@ -18,7 +18,7 @@ public class BannerController {
     @Autowired
     private BannerService bannerService;
     /**
-     * TODO 用户前台调用 轮播图
+     * 用户前台调用 轮播图
      * 获取轮播图
      * */
     @GetMapping("/getAllBanner")

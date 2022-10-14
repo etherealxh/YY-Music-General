@@ -24,7 +24,7 @@
           <div>{{ changeSex(scope.row.sex) }}</div>
         </template>
       </el-table-column>
-      <el-table-column label="出生" prop="birth" width="120" align="center">
+      <el-table-column label="出生日期" prop="birth" width="120" align="center">
         <template v-slot="scope">
           <div>{{ getBirth(scope.row.birth) }}</div>
         </template>

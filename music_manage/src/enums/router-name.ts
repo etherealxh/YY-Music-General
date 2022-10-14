@@ -8,6 +8,8 @@ export const enum RouterName {
   Comment = "/Comment",
   Consumer = "/consumer",
   Collect = "/collect",
+  Message = "/message",
+  Feedback = "/feedback",
   Error = "/404",
   SignIn = "/",
   SignOut = "0",

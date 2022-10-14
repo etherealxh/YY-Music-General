@@ -24,6 +24,14 @@
                 <el-icon><Document /></el-icon>
                 <span>歌单管理</span>
             </el-menu-item>
+            <el-menu-item index="message">
+              <el-icon><Document /></el-icon>
+              <span>留言管理</span>
+            </el-menu-item>
+            <el-menu-item index="feedback">
+              <el-icon><Document /></el-icon>
+              <span>反馈</span>
+            </el-menu-item>
         </el-menu>
     </div>
 </template>

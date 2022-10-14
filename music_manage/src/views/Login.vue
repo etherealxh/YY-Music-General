@@ -40,6 +40,7 @@ export default defineComponent({
     async function submitForm() {
       let username = ruleForm.username;
       let password = ruleForm.password;
+      sessionStorage.setItem("username",username);
       const result = (await HttpManager.getLoginStatus({username,password})) as ResponseBody;
       (proxy as any).$message({
         message: result.message,

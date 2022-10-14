@@ -64,6 +64,7 @@ export default defineComponent({
           proxy.$store.commit("setToken", true);
           changeIndex(NavName.Home);
           routerManager(RouterName.Home, { path: RouterName.Home });
+          sessionStorage.setItem("username",username);
         }
       } catch (error) {
         console.error(error);

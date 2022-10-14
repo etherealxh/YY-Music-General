@@ -79,6 +79,8 @@ export default function () {
       case RouterName.Info:
       case RouterName.Singer:
       case RouterName.SongList:
+      case RouterName.Message:
+      case RouterName.Feedback:
       case RouterName.Error:
       default:
         proxy.$router.push({ path: options.path });
@@ -90,5 +92,13 @@ export default function () {
     proxy.$router.go(step);
   }
 
-  return { changeSex, routerManager, goBack, beforeImgUpload, beforeSongUpload };
+  function changeReplied(value){
+    if(value === null){
+      return "未回复";
+    }else {
+      return "已回复";
+    }
+  }
+
+  return { changeSex, routerManager, goBack, beforeImgUpload, beforeSongUpload, changeReplied };
 }

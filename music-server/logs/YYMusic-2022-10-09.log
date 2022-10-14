@@ -1,0 +1,39 @@
+2022-10-09 15:57:50 INFO [com.example.yy.YYMusicApplication]: Starting YYMusicApplication using Java 1.8.0_342 on WINDOWS-DIUO5D0 with PID 18476 (D:\Projects\music\YY-Music\music-server\target\classes started by EDY in D:\Projects\music\YY-Music\music-server)
+2022-10-09 15:57:50 INFO [com.example.yy.YYMusicApplication]: The following profiles are active: dev
+2022-10-09 15:57:50 INFO [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor]: Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-10-09 15:57:50 INFO [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor]: For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-10-09 15:57:52 INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate]: Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-10-09 15:57:52 INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate]: Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-10-09 15:57:52 INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate]: Finished Spring Data repository scanning in 24 ms. Found 0 Redis repository interfaces.
+2022-10-09 15:57:54 INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer]: Tomcat initialized with port(s): 8888 (http)
+2022-10-09 15:57:54 INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext]: Root WebApplicationContext: initialization completed in 3865 ms
+2022-10-09 15:57:55 WARN [org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration]: Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2022-10-09 15:57:56 INFO [org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer]: LiveReload server is running on port 35729
+2022-10-09 15:57:56 INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer]: Tomcat started on port(s): 8888 (http) with context path ''
+2022-10-09 15:57:56 INFO [com.example.yy.YYMusicApplication]: Started YYMusicApplication in 6.078 seconds (JVM running for 7.723)
+2022-10-09 16:00:17 INFO [org.springframework.web.servlet.DispatcherServlet]: Initializing Servlet 'dispatcherServlet'
+2022-10-09 16:00:17 INFO [org.springframework.web.servlet.DispatcherServlet]: Completed initialization in 147 ms
+2022-10-09 16:00:18 INFO [com.zaxxer.hikari.HikariDataSource]: HikariPool-1 - Starting...
+2022-10-09 16:00:18 INFO [com.zaxxer.hikari.HikariDataSource]: HikariPool-1 - Start completed.
+2022-10-09 16:57:53 INFO [com.zaxxer.hikari.HikariDataSource]: HikariPool-1 - Shutdown initiated...
+2022-10-09 16:57:53 INFO [com.zaxxer.hikari.HikariDataSource]: HikariPool-1 - Shutdown completed.
+2022-10-09 16:58:00 INFO [com.example.yy.YYMusicApplication]: Starting YYMusicApplication using Java 1.8.0_342 on WINDOWS-DIUO5D0 with PID 22664 (D:\Projects\music\YY-Music\music-server\target\classes started by EDY in D:\Projects\music\YY-Music\music-server)
+2022-10-09 16:58:00 INFO [com.example.yy.YYMusicApplication]: The following profiles are active: dev
+2022-10-09 16:58:00 INFO [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor]: Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-10-09 16:58:00 INFO [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor]: For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-10-09 16:58:01 INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate]: Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-10-09 16:58:01 INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate]: Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-10-09 16:58:01 INFO [org.springframework.data.repository.config.RepositoryConfigurationDelegate]: Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
+2022-10-09 16:58:03 INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer]: Tomcat initialized with port(s): 8888 (http)
+2022-10-09 16:58:03 INFO [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext]: Root WebApplicationContext: initialization completed in 2891 ms
+2022-10-09 16:58:04 WARN [org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration]: Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2022-10-09 16:58:04 INFO [org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer]: LiveReload server is running on port 35729
+2022-10-09 16:58:04 INFO [org.springframework.boot.web.embedded.tomcat.TomcatWebServer]: Tomcat started on port(s): 8888 (http) with context path ''
+2022-10-09 16:58:04 INFO [com.example.yy.YYMusicApplication]: Started YYMusicApplication in 4.312 seconds (JVM running for 5.479)
+2022-10-09 16:59:08 INFO [org.springframework.web.servlet.DispatcherServlet]: Initializing Servlet 'dispatcherServlet'
+2022-10-09 16:59:08 INFO [org.springframework.web.servlet.DispatcherServlet]: Completed initialization in 2 ms
+2022-10-09 16:59:09 INFO [com.zaxxer.hikari.HikariDataSource]: HikariPool-1 - Starting...
+2022-10-09 16:59:09 INFO [com.zaxxer.hikari.HikariDataSource]: HikariPool-1 - Start completed.
+2022-10-09 17:07:22 WARN [org.springframework.web.servlet.PageNotFound]: No mapping for GET /favicon.ico
+2022-10-09 18:23:36 INFO [com.zaxxer.hikari.HikariDataSource]: HikariPool-1 - Shutdown initiated...
+2022-10-09 18:23:36 INFO [com.zaxxer.hikari.HikariDataSource]: HikariPool-1 - Shutdown completed.

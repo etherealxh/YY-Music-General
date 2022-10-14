@@ -45,6 +45,16 @@ const routes: Array<RouteRecordRaw> = [
         path: '/Collect',
         component: () => import('@/views/CollectPage.vue'),
         meta: { title: 'Collect' }
+      },
+      {
+        path: '/Message',
+        component: () => import('@/views/MessageBoard.vue'),
+        meta: { title: 'Message' }
+      },
+      {
+        path: '/Feedback',
+        component: () => import('@/views/FeedbackPage.vue'),
+        meta: { title: 'Feedback' }
       }
     ]
   },
