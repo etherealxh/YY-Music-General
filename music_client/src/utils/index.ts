@@ -42,6 +42,7 @@ export function parseLyric(text) {
   for (const item of lines) {
     const time = item.match(pattern); // 存前面的时间段
     const value = item.replace(pattern, ""); // 存歌词
+    if(time === null) return [[0, value]];// 歌词未收录
     for (const item1 of time) {
       const t = item1.slice(1, -1).split(":");
       if (value !== "") {
