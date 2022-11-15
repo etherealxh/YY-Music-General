@@ -3,12 +3,12 @@
 <mapper namespace="com.example.yy.mapper.FeedbackMapper">
     <resultMap id="BaseResultMap" type="com.example.yy.model.domain.Feedback">
         <id column="id" property="id" jdbcType="INTEGER" />
-        <result column="user_id" property="userId" jdbcType="VARCHAR" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
         <result column="message" property="message" jdbcType="VARCHAR" />
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
 
     </resultMap>
     <sql id="Base_Column_List">
-        id, user_id,message,create_time
+        id, username,message,create_time
     </sql>
 </mapper>

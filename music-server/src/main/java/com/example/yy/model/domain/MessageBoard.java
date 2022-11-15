@@ -15,7 +15,7 @@ public class MessageBoard {
     @TableId(type = IdType.AUTO)
     private Integer id;
 
-    private String userId;
+    private String username;
 
     private String message;
 

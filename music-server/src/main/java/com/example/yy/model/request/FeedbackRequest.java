@@ -8,7 +8,7 @@ import java.util.Date;
 public class FeedbackRequest {
     private Integer id;
 
-    private String userId;
+    private String username;
 
     private String message;
 

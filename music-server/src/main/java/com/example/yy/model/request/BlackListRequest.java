@@ -7,9 +7,9 @@ import java.util.Date;
 public class BlackListRequest {
     private Integer id;
 
-    private String userId;
+    private String username;
 
-    private String explain;
+    private String reason;
 
     private Date createTime;
 }

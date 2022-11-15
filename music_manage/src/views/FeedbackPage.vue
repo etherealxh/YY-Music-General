@@ -6,7 +6,7 @@
     <el-table height="700px" border size="small" :data="data" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="40" align="center"></el-table-column>
       <el-table-column label="ID" prop="id" width="100" align="center"></el-table-column>
-      <el-table-column label="用户昵称" prop="userId" width="200" align="center"></el-table-column>
+      <el-table-column label="用户昵称" prop="username" width="200" align="center"></el-table-column>
       <el-table-column label="反馈内容" prop="message" width="800" align="center">
         <template v-slot="scope">
           <p style="height: 100px; overflow: scroll">

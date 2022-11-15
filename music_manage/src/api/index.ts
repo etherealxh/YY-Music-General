@@ -105,6 +105,14 @@ const HttpManager = {
     getALLFeedback:() => get('feedback'),
     //删除反馈
     deleteFeedback: (id) => get(`/feedback/delete?id=${id}`),
+
+    // =======================> 黑名单 API 完成
+    // 添加黑名单
+    addBlackList:( {username,reason}) => post(`/blacklist/add`,{username,reason}),
+    // 移除黑名单
+    deleteBlackList:(id) => get(`/blacklist/delete?id=${id}`),
+    // 获取黑名单
+    getAllBlacklist:() => get(`blacklist`)
 }
 
 export {HttpManager}

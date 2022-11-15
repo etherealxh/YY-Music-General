@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.yy.common.R;
 import com.example.yy.mapper.BlackListMapper;
 import com.example.yy.model.domain.BlackList;
+import com.example.yy.model.domain.Feedback;
 import com.example.yy.model.request.BlackListRequest;
 import com.example.yy.service.BlackListService;
 import org.springframework.beans.BeanUtils;
@@ -20,10 +21,11 @@ public class BlackListServiceImpl extends ServiceImpl<BlackListMapper, BlackList
     @Override
     public R addBlackList(BlackListRequest addBlackListRequest) {
         BlackList blackList = new BlackList();
+
         BeanUtils.copyProperties(addBlackListRequest,blackList);
         blackList.setCreateTime(new Date());
         if (blackListMapper.insert(blackList)>0){
-            return R.success("成功加入黑名单");
+            return R.success("加入黑名单成功");
         }else {
             return R.error("加入失败");
         }

@@ -9,7 +9,7 @@ public class MessageBoardRequest {
 
     private Integer id;
 
-    private String userId;
+    private String username;
 
     private String message;
 

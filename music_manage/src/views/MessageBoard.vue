@@ -7,7 +7,7 @@
     <el-table height="700px" border size="small" :data="data" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="40" align="center"></el-table-column>
       <el-table-column label="ID" prop="id" width="50" align="center"></el-table-column>
-      <el-table-column label="用户昵称" prop="userId" width="110" align="center"></el-table-column>
+      <el-table-column label="用户昵称" prop="username" width="110" align="center"></el-table-column>
       <el-table-column label="留言内容" prop="message" width="120" align="center">
         <template v-slot="scope">
           <p style="height: 100px; overflow: scroll">
@@ -137,7 +137,7 @@ export default defineComponent({
 
     async function changeSwitch(row) {
       let id = row.id;
-      let userId = row.userId;
+      let username = row.username;
       let message = row.message;
       let createTime = row.createTime;
       let replied = row.replied;
@@ -147,7 +147,7 @@ export default defineComponent({
       let enabled = row.enabled=== 0 ? "0":"1";
         const result = (await HttpManager.replyMessageBoard({
           id,
-          userId,
+          username,
           message,
           replied,
           replyName,
@@ -162,7 +162,7 @@ export default defineComponent({
     const editVisible = ref(false);
     const editFrom = reactive({
       id:"",
-      userId:"",
+      username:"",
       message:"",
       createTime:new Date(),
       replied:"",
@@ -174,7 +174,7 @@ export default defineComponent({
      function editRow(row) {
        editVisible.value = true;
        editFrom.id = row.id;
-       editFrom.userId = row.userId;
+       editFrom.username = row.username;
        editFrom.message = row.message;
        editFrom.createTime = row.createTime;
        editFrom.replied = row.replied;
@@ -186,7 +186,7 @@ export default defineComponent({
      async function saveEdit() {
        try {
          let id = editFrom.id;
-         let userId = editFrom.userId;
+         let username = editFrom.username;
          let message = editFrom.message;
          let replied = 1;
          let replyName = sessionStorage.getItem("username");
@@ -196,7 +196,7 @@ export default defineComponent({
 
          const result = (await HttpManager.replyMessageBoard({
            id,
-           userId,
+           username,
            message,
            replied,
            replyName,
