@@ -42,13 +42,23 @@ export function parseLyric(text) {
   for (const item of lines) {
     const time = item.match(pattern); // 存前面的时间段
     const value = item.replace(pattern, ""); // 存歌词
-    if(time === null) return [[0, value]];// 歌词未收录
-    for (const item1 of time) {
-      const t = item1.slice(1, -1).split(":");
-      if (value !== "") {
-        result.push([parseInt(t[0], 10) * 60 + parseFloat(t[1]), value]);
+    //if(time === null) return [[0, value]];// 歌词未收录
+    if(time === null){
+      for (const item1 in time) {
+        const t = item1.slice(1, -1).split(":");
+        if (value !== "") {
+          result.push([parseInt(t[0], 10) * 60 + parseFloat(t[1]), value]);
+        }
+      }
+    }else{
+      for (const item1 of time) {
+        const t = item1.slice(1, -1).split(":");
+        if (value !== "") {
+          result.push([parseInt(t[0], 10) * 60 + parseFloat(t[1]), value]);
+        }
       }
     }
+
   }
   result.sort((a, b) => a[0] - b[0]);
   return result;

@@ -1,9 +1,11 @@
 package com.example.yy.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.yy.common.R;
 import com.example.yy.mapper.BlackListMapper;
 import com.example.yy.model.domain.BlackList;
+import com.example.yy.model.domain.Consumer;
 import com.example.yy.model.domain.Feedback;
 import com.example.yy.model.request.BlackListRequest;
 import com.example.yy.service.BlackListService;
@@ -20,8 +22,10 @@ public class BlackListServiceImpl extends ServiceImpl<BlackListMapper, BlackList
     private BlackListMapper blackListMapper;
     @Override
     public R addBlackList(BlackListRequest addBlackListRequest) {
+        if (this.existBlackList(addBlackListRequest.getUsername())){
+            return R.warning("用户已在黑名单中");
+        }
         BlackList blackList = new BlackList();
-
         BeanUtils.copyProperties(addBlackListRequest,blackList);
         blackList.setCreateTime(new Date());
         if (blackListMapper.insert(blackList)>0){
@@ -43,5 +47,16 @@ public class BlackListServiceImpl extends ServiceImpl<BlackListMapper, BlackList
     @Override
     public R allBlackList() {
         return R.success(null,blackListMapper.selectList(null));
+    }
+
+    @Override
+    public boolean existBlackList(String username) {
+        QueryWrapper<BlackList> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("username",username);
+        if (blackListMapper.selectCount(queryWrapper)>0){
+            return true;
+        }else {
+            return false;
+        }
     }
 }

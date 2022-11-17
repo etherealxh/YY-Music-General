@@ -93,13 +93,17 @@ const HttpManager = {
 
   // =======================> 留言 API
   //增加留言
-  addMessageBoard:({userId,message}) => post('message/add',{userId,message}),
+  addMessageBoard:({username,message}) => post('message/add',{username,message}),
   //获取展示留言
   getEnabledMessageBoard: (enabled) => get(`message/enabled/detail?enabled=${enabled}`),
 
   // =======================> 反馈 API
-  addFeedback:({userId,message}) => post('feedback/add',{userId,message})
+  //添加反馈
+  addFeedback:({username,message}) => post('feedback/add',{username,message}),
 
+  // =======================> 黑名单 API
+  //查询是否在黑名单内
+  existBlackList:(username) => get(`/blacklist/exist?username=${username}`)
 };
 
 

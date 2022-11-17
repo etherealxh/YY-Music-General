@@ -9,7 +9,7 @@
   </div>
   <ul class="popular">
     <li v-for="(item, index) in commentList" :key="index">
-      <el-image class="popular-img" fit="contain" :src="attachImageUrl(item.avator)" />
+      <el-image class="popular-img" fit="contain" :src="attachImageUrl(item.avatar)" />
       <div class="popular-msg">
         <ul>
           <li class="name">{{ item.username }}</li>
@@ -65,8 +65,12 @@ export default defineComponent({
     // 获取所有评论
     async function getComment() {
       try {
-        const result = (await HttpManager.getAllComment(type.value, playId.value)) as ResponseBody;
+       //const result = (await HttpManager.getAllComment(type.value, playId.value)) as ResponseBody;
+        const result = (await HttpManager.getAllComment(type.value, songIdVO.value)) as ResponseBody;
         commentList.value = result.data;
+
+
+
         for (let index = 0; index < commentList.value.length; index++) {
           // 获取评论用户的昵称和头像
           const resultUser = (await HttpManager.getUserOfId(commentList.value[index].userId)) as ResponseBody;
@@ -77,34 +81,55 @@ export default defineComponent({
         console.error(error);
       }
     }
+    //判断是否处于黑名单
+    const stu = ref(false);
+    async function getBlackList(){
+      if (store.getters.username!=null){
+        if (await HttpManager.existBlackList(store.getters.username) == true){
+          stu.value= true;
+        }else{
+          stu.value= false;
+        }
+      }else {
+        this.$message.info("您尚未登录，请先登录")
+      }
+    }
+
+
+
 
     // 提交评论
     async function submitComment() {
       if (!checkStatus()) return;
+        await getBlackList();
+        if(stu.value == true){
+          this.$message.warning("你已被站点拉人黑名单，无法使用此功能");
+        }else{
+          // 0 代表歌曲， 1 代表歌单
+          let songListId = null;
+          let songId = null;
+          let nowType = null;
+          if (type.value === 1) {
+            nowType = 1;
+            songListId = `${playId.value}`;
+          } else if (type.value === 0) {
+            nowType = 0;
+            songId = `${playId.value}`;
+          }
+          const userId = userIdVO.value;
+          const content = textarea.value;
+          const result = (await HttpManager.setComment({userId,content,songId,songListId,nowType})) as ResponseBody;
+          (proxy as any).$message({
+            message: result.message,
+            type: result.type,
+          });
 
-      // 0 代表歌曲， 1 代表歌单
-      let songListId = null;
-      let songId = null;
-      let nowType = null;
-      if (type.value === 1) {
-        nowType = 1;
-        songListId = `${playId.value}`;
-      } else if (type.value === 0) {
-        nowType = 0;
-        songId = `${playId.value}`;
-      }
-      const userId = userIdVO.value;
-      const content = textarea.value;
-      const result = (await HttpManager.setComment({userId,content,songId,songListId,nowType})) as ResponseBody;
-      (proxy as any).$message({
-        message: result.message,
-        type: result.type,
-      });
+          if (result.success) {
+            textarea.value = "";
+            await getComment();
+          }
+        }
 
-      if (result.success) {
-        textarea.value = "";
-        await getComment();
-      }
     }
 
     // 删除评论
@@ -124,7 +149,7 @@ export default defineComponent({
       let result = null;
       let operatorR = null;
       const commentId = id;
-      //当然可以这么左 直接在判断的时候 进行点赞或者取消
+      // 直接在判断的时候 进行点赞或者取消
       const r = (await HttpManager.testAlreadySupport({commentId,userId})) as ResponseBody;
       (proxy as any).$message({
         message: r.message,

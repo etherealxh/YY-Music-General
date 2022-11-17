@@ -17,6 +17,7 @@
       </el-form-item>
     </el-form>
   </div>
+
 </template>
 
 <script lang="ts">
@@ -25,6 +26,7 @@ import mixin from "@/mixins/mixin";
 import YYLoginLogo from "@/components/layouts/YYLoginLogo.vue";
 import { HttpManager } from "@/api";
 import { NavName, RouterName, SignInRules } from "@/enums";
+
 
 export default defineComponent({
   components: {

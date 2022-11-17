@@ -12,7 +12,7 @@
             <el-card class="el-card-m">
               <span class="el-card-m-content">{{ item.message }}</span>
               <div />
-              <span class="el-card-m-nick-name">{{ item.userId }} 提交于 {{ parseTime(item.createTime) }}  </span>
+              <span class="el-card-m-nick-name">{{ item.username }} 提交于 {{ parseTime(item.createTime) }}  </span>
               <div />
               <span v-if="item.replyContent" class="el-card-m-reply">{{ item.replyName }}回复：{{ item.replyContent }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ parseTime(item.updateTime) }} </span>
             </el-card>
@@ -43,7 +43,7 @@
           <br />
           <el-form-item>
           <el-card >
-            <span >用户{{ messageFrom.userId}} 欢迎您访问我的站点，请留下您想说的话吧 </span>
+            <span >用户{{ messageFrom.username}} 欢迎您访问我的站点，请留下您想说的话吧 </span>
           </el-card>
           </el-form-item>
             <el-input
@@ -67,6 +67,8 @@
   <div>
   <el-button type="primary" @click="messageVisibleChange()" plain>我也留个言</el-button>
   </div>
+  <login-dialog v-model="loginDialogVisible" ></login-dialog>
+  <black-list-dialog v-model="blackListDialogVisible"></black-list-dialog>
 </template>
 
 <script>
@@ -74,8 +76,11 @@ import { parseTime } from '@/utils/index'
 import { HttpManager } from "@/api";
 import {computed, defineComponent, reactive, ref} from "vue";
 import store from "@/store";
+import LoginDialog from "../../components/dialog/LoginDialog";
+import BlackListDialog from "../../components/dialog/BlackListDialog";
 export default defineComponent({
-setup() {
+  components: {BlackListDialog, LoginDialog},
+  setup() {
   const tableData = ref([]); // 记录数据，用于显示
   const tempDate = ref([]); // 记录数据，用于搜索时能临时记录一份
   const pageSize = ref(5); // 页数
@@ -107,26 +112,36 @@ setup() {
    * 留言
    * */
   const messageVisible = ref(false);
+  const loginDialogVisible = ref(false);
+  const blackListDialogVisible = ref(false);
   const messageFrom = reactive({
-    userId:"",
+    username:"",
     message:""
   })
-  function messageVisibleChange() {
-    messageVisible.value = true;
-    //messageFrom.userId = sessionStorage.getItem("username");
-    messageFrom.userId = store.getters.username;
+  async function messageVisibleChange() {
+    if (store.getters.token == false) {
+      loginDialogVisible.value = true;
+    } else {
+      if (await HttpManager.existBlackList(store.getters.username) == true) {
+        blackListDialogVisible.value = true;
+      } else {
+        messageVisible.value = true;
+        messageFrom.username = store.getters.username;
+      }
+    }
+
   }
   async function saveMessage(){
     try {
-      let userId = store.getters.username;
+      let username = store.getters.username;
       let message = messageFrom.message;
 
       const result = (await HttpManager.addMessageBoard({
-        userId,
+        username,
         message
       }))
 
-      if (result.success) getData();
+      if (result.success) await getData();
       messageVisible.value = false;
     } catch (error){
       console.error(error);
@@ -142,7 +157,9 @@ setup() {
     messageVisible,
     messageFrom,
     messageVisibleChange,
-    saveMessage
+    saveMessage,
+    loginDialogVisible,
+    blackListDialogVisible
   }
 
 }

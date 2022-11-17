@@ -2,6 +2,11 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = [
   {
+    path:'/Login',
+    component: () => import('@/views/Login.vue'),
+    meta: { title: 'login'}
+  },
+  {
     path: '/Home',
     component: () => import('@/views/Home.vue'),
     meta: { title: '自述文件' },

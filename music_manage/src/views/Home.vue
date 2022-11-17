@@ -13,8 +13,13 @@ import YYHeader from "@/components/layouts/YYHeader.vue";
 import YYAudio from "@/components/layouts/YYAudio.vue";
 import YYAside from "@/components/layouts/YYAside.vue";
 import emitter from "@/utils/emitter";
-
-
+import {RouterName} from "@/enums";
+import mixin from "@/mixins/mixin";
+const { routerManager } = mixin();
+const username =ref( sessionStorage.getItem("username") );
+if(username.value == null){
+  routerManager(RouterName.Login, { path: RouterName.Login })
+}
 const collapse = ref(false);
 emitter.on("collapse", (msg) => {
   collapse.value = msg as boolean;

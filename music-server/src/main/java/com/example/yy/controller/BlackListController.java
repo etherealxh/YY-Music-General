@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * 黑名单相关
- *
  * @Author Ethereal
  * @Time : 2022/11/14
  */
@@ -40,4 +39,11 @@ public class BlackListController {
     @GetMapping("/blacklist")
     public R allBlackList(){return blackListService.allBlackList();}
 
+    /**
+     * 判断用户是否在黑名单中
+     * */
+    @GetMapping("/blacklist/exist")
+    public boolean existBlackList(@RequestParam String username){
+        return blackListService.existBlackList(username);
+    }
 }

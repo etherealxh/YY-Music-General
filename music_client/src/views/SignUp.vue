@@ -36,8 +36,8 @@
         </el-select>
       </el-form-item>
       <el-form-item class="sign-btn">
-        <el-button @click="goBack()">登录</el-button>
-        <el-button type="primary" @click="handleSignUp(formRef)">确定</el-button>
+        <el-button @click="goSignIn()">登录</el-button>
+        <el-button type="primary" @click="handleSignUp()">确定</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -70,14 +70,16 @@ export default defineComponent({
       location: "",
     });
 
+    function goSignIn() {
+      routerManager(RouterName.SignIn, { path: RouterName.SignIn });
+    }
+
     async function handleSignUp() {
       let canRun = true;
       (proxy.$refs["signUpForm"] as any).validate((valid) => {
         if (!valid) return (canRun = false);
       });
       if (!canRun) return;
-
-
       try {
         const username = registerForm.username;
         const password = registerForm.password;
@@ -107,6 +109,7 @@ export default defineComponent({
       AREA,
       registerForm,
       handleSignUp,
+      goSignIn
     };
   },
 });

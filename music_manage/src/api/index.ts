@@ -112,7 +112,8 @@ const HttpManager = {
     // 移除黑名单
     deleteBlackList:(id) => get(`/blacklist/delete?id=${id}`),
     // 获取黑名单
-    getAllBlacklist:() => get(`blacklist`)
+    getAllBlacklist:() => get(`blacklist`),
+
 }
 
 export {HttpManager}

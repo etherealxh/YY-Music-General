@@ -12,4 +12,6 @@ public interface BlackListService extends IService<BlackList> {
     R deleteBlackList(Integer id);
 
     R allBlackList();
+
+    boolean existBlackList(String username);
 }

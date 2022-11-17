@@ -1,4 +1,5 @@
 export const enum RouterName {
+  Login = "/login",
   Home = "/home",
   Info = "/info",
   Song = "/song",

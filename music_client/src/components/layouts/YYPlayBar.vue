@@ -48,10 +48,10 @@
                         class="yy-play-show"
                         :icon="iconList.download"
                         @click="
-            downloadMusic({
-              songUrl,
-              songName: singerName + '-' + songTitle,
-            })
+            store.getters.token?( stu?inBlackList():downloadMusic({
+                songUrl,
+                songName: singerName + '-' + songTitle,
+              })):noLogin()
           "
                 ></y-y-icon>
                 <!--歌曲列表-->
@@ -59,6 +59,8 @@
             </div>
         </div>
     </div>
+  <login-dialog v-model="loginDialogVisible" ></login-dialog>
+  <black-list-dialog v-model="blackListDialogVisible"></black-list-dialog>
 </template>
 
 <script lang="ts">
@@ -69,9 +71,13 @@
     import {HttpManager} from "@/api";
     import {formatSeconds} from "@/utils";
     import {Icon, RouterName} from "@/enums";
+    import LoginDialog from "@/components/dialog/LoginDialog.vue";
+    import BlackListDialog from "@/components/dialog/BlackListDialog.vue";
 
     export default defineComponent({
         components: {
+          BlackListDialog,
+          LoginDialog,
             YYIcon,
         },
         setup() {
@@ -85,6 +91,8 @@
             const songIdVO = computed(() => store.getters.songId);
             const token = computed(() => store.getters.token);
 
+
+            getBlackList()
             watch(songIdVO, () => {
                 initCollection();
             });
@@ -123,6 +131,27 @@
                 if (songIdVO.value) initCollection();
             });
 
+            const loginDialogVisible = ref(false);
+            const blackListDialogVisible = ref(false);
+            function noLogin(){
+                loginDialogVisible.value = true;
+            }
+            function inBlackList(){
+                blackListDialogVisible.value = true;
+            }
+            //判断是否处于黑名单
+            const stu = ref(false);
+            async function getBlackList(){
+                if (store.getters.username!=null){
+                  if (await HttpManager.existBlackList(store.getters.username) == true){
+                    stu.value= true;
+                  }else{
+                    stu.value= false;
+                  }
+                }
+               }
+
+
             return {
                 isCollection,
                 playMusic,
@@ -130,7 +159,15 @@
                 checkStatus,
                 attachImageUrl: HttpManager.attachImageUrl,
                 changeCollection,
-                downloadMusic
+                downloadMusic,
+                store,
+                stu,
+                noLogin,
+                getBlackList,
+                inBlackList,
+                loginDialogVisible,
+                blackListDialogVisible,
+                HttpManager
             };
         },
         data() {

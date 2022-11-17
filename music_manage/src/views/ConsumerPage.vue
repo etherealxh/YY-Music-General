@@ -41,7 +41,7 @@
       </el-table-column>
       <el-table-column label="处罚" width="150" align="center">
         <template v-slot="scope">
-        <el-button type="danger" @click="joinBlackList(scope.row.username)">加入黑名单</el-button>
+        <el-button type="danger" @click="joinBlackList(scope.row.username)" >加入黑名单</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -231,6 +231,7 @@ export default defineComponent({
       getBlackListData();
       blackListDialogVisible.value = true;
     }
+
     /**
      * 加入黑名单
      * */

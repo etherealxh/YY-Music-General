@@ -81,6 +81,7 @@ export default function () {
       case RouterName.SongList:
       case RouterName.Message:
       case RouterName.Feedback:
+      case RouterName.Login:
       case RouterName.Error:
       default:
         proxy.$router.push({ path: options.path });
