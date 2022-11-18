@@ -59,7 +59,7 @@
       <el-card class="cav-info" shadow="hover" :body-style="{ padding: '0px' }" id="userSex"></el-card>
     </el-col>
     <el-col :span="12">
-      <h3>歌曲类型</h3>
+      <h3>歌单类型</h3>
       <el-card class="cav-info" shadow="hover" :body-style="{ padding: '0px' }" id="songStyle"></el-card>
     </el-col>
   </el-row>
@@ -142,11 +142,11 @@ const country = reactive({
     data: [
       "中国",
       "韩国",
-      "意大利",
+      "英国",
       "新加坡",
       "美国",
       // "马来西亚",
-      "西班牙",
+      "泰国",
       "日本",
     ],
   },
